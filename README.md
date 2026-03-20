@@ -9,7 +9,7 @@ This is a beginner-friendly Python console application for recording and searchi
 3. Run:
 
 ```bash
-python equipment_booking.py
+python3 equipment_booking.py
 ```
 
 ## Features
