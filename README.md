@@ -24,3 +24,13 @@ python3 equipment_booking.py
   - Laptop 2
   - Projector A
   - Tablet 1
+
+## Quick Demo (for presentation)
+Try this exact flow to show that booking and search work:
+
+1. Choose `2` (Record a booking)
+2. Enter student name: `Khadar Hassan`
+3. Enter equipment name: `Laptop 1`
+4. Enter date: `2026-03-19`
+5. Choose `3` (View booking records) to show the saved booking
+6. Choose `4` (Search bookings), type `khadar` to show case-insensitive search result

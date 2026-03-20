@@ -35,6 +35,15 @@ def seed_default_equipment():
     return equipment
 
 
+def print_equipment_list(equipment_db):
+    """Show all equipment names in one line."""
+    names = [equipment_db[key]["display_name"] for key in sorted(equipment_db.keys())]
+    if names:
+        print("Available equipment: " + ", ".join(names))
+    else:
+        print("No equipment is available.")
+
+
 def add_equipment(equipment_db):
     """Add a new equipment item to the system."""
     print("\n--- Add New Equipment ---")
@@ -68,6 +77,7 @@ def is_equipment_available(equipment_db, equipment_key, booking_date):
 def record_booking(equipment_db):
     """Record a booking for an equipment item."""
     print("\n--- Record a Booking ---")
+    print_equipment_list(equipment_db)
     student_name = input("Enter student name: ").strip()
     equipment_name = input("Enter equipment name: ").strip()
     date_text = input("Enter booking date (YYYY-MM-DD): ").strip()
@@ -87,7 +97,7 @@ def record_booking(equipment_db):
 
     equipment_key = normalize_equipment_name(equipment_name)
     if equipment_key not in equipment_db:
-        print("Error: Equipment not found.")
+        print("Error: Equipment not found. Please choose a name from the list above.")
         return
 
     booking_date = parsed_date.isoformat()
@@ -101,7 +111,10 @@ def record_booking(equipment_db):
             "booking_date": booking_date,
         }
     )
-    print("Success: Booking recorded.")
+    print(
+        "Success: Booking recorded for "
+        f"{equipment_db[equipment_key]['display_name']} on {booking_date}."
+    )
 
 
 def view_bookings(equipment_db):
@@ -152,7 +165,7 @@ def search_bookings(equipment_db):
                 )
 
     if not found_any:
-        print("No matching bookings found.")
+        print("No matching bookings found. Try a different name, or add a booking first.")
 
 
 def print_menu():
